@@ -389,6 +389,11 @@ public class FakeJedis extends Jedis {
         public long size() {
             return (long) this.list.size();
         }
+
+        @Override
+        public String toString() {
+            return list.toString();
+        }
     }
 
     private static class JedisHash extends JedisObject {
@@ -397,6 +402,11 @@ public class FakeJedis extends Jedis {
         public JedisHash() {
             super(JedisObjectType.HASH);
             this.hash = new HashMap<>();
+        }
+
+        @Override
+        public String toString() {
+            return hash.toString();
         }
     }
 
@@ -407,6 +417,11 @@ public class FakeJedis extends Jedis {
             super(JedisObjectType.SET);
             this.set = new HashSet<>();
         }
+
+        @Override
+        public String toString() {
+            return set.toString();
+        }
     }
 
     private static class JedisString extends JedisObject {
@@ -415,6 +430,11 @@ public class FakeJedis extends Jedis {
         public JedisString(String value) {
             super(JedisObjectType.STRING);
             this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
         }
     }
 

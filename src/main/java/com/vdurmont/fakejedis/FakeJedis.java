@@ -25,6 +25,8 @@ import redis.clients.util.Slowlog;
 
 import java.util.*;
 
+import static java.util.Collections.unmodifiableMap;
+
 /**
  * Jedis wrapper that simulates the behaviour of redis
  *
@@ -39,6 +41,13 @@ public class FakeJedis extends Jedis {
         super("");
         this.LOCK = new Object();
         this.database = new HashMap<>();
+    }
+
+    /**
+     * Returns a read-only view of the database
+     */
+    public Map<String, Object> getDatabase() {
+        return unmodifiableMap(database);
     }
 
     // //////////////////////
